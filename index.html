@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - SalaBot</title>
+    <style>
+        body { font-family: Arial, background-color: #ffeef4; text-align: center; padding-top: 100px; }
+        input { padding: 10px; margin: 10px; border-radius: 10px; border: 1px solid #ccc; }
+        button { padding: 10px 20px; background-color: #ff4d6d; border: none; color: white; border-radius: 10px; cursor: pointer; }
+        button:hover { background-color: #ff1a4d; }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo ao SalaBot</h1>
+    <input type="text" id="ra" placeholder="RA (sem zeros)">
+    <br>
+    <input type="password" id="senha" placeholder="Senha">
+    <br>
+    <button onclick="entrar()">Entrar</button>
+
+    <script>
+        function entrar() {
+            const ra = document.getElementById("ra").value;
+            const senha = document.getElementById("senha").value;
+            if (ra && senha) {
+                localStorage.setItem("ra", ra);
+                window.location.href = "sala-do-futuro.html";
+            } else {
+                alert("Preencha RA e senha para continuar.");
+            }
+        }
+    </script>
+</body>
+</html>
