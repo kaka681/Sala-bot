@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sala do Futuro</title>
+    <style>
+        body { font-family: Arial; background: #fff0f5; text-align: center; padding-top: 50px; }
+        .botao { font-size: 18px; padding: 10px 20px; margin: 20px; border-radius: 10px; border: none; background-color: #e75480; color: white; cursor: pointer; }
+        .botao:hover { background-color: #d93c6d; }
+    </style>
+</head>
+<body>
+    <h1>Olá, RA <span id="ra"></span>!</h1>
+    <p>Aqui é a Sala do Futuro. As lições começarão automaticamente.</p>
+
+    <button class="botao" onclick="parar()">Parar (P)</button>
+    <button class="botao" onclick="voltar()">Voltar (V)</button>
+
+    <script>
+        let escrevendo = true;
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'p' || event.key === 'P') parar();
+            if (event.key === 'v' || event.key === 'V') voltar();
+        });
+
+        function parar() {
+            escrevendo = false;
+            alert("Escrita pausada.");
+        }
+
+        function voltar() {
+            escrevendo = true;
+            alert("Escrita retomada.");
+            escreverLicoes();
+        }
+
+        function escreverLicoes() {
+            if (!escrevendo) return;
+            console.log("Escrevendo lição...");
+            setTimeout(() => {
+                if (escrevendo) {
+                    alert("Lição concluída!");
+                }
+            }, 5000);
+        }
+
+        document.getElementById("ra").innerText = localStorage.getItem("ra");
+        escreverLicoes();
+    </script>
+</body>
+</html>
+  
